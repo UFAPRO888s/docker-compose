@@ -1,174 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width,height=device-height,initial-scale=1.0"
-    />
-    <meta
-      name="description"
-      content="Online Python Editor With Live Syntax Checking"
-    />
-    <meta name="keywords" content="Lint,Online,Editor,Python,Syntax-Checking" />
-    <title>Block Python editor</title>
-    <!-- Blockly -->
-    <script
-      src="/static/lib/blockly/blockly_compressed.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/blockly/blocks_compressed.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/blockly/msg/js/en.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/blockly/python_compressed.js"
-      type="text/javascript"
-    ></script>
 
-    <!-- CodeMirror -->
-    <link rel="stylesheet" href="/static/lib/codemirror/codemirror.css" />
-    <link rel="stylesheet" href="/static/lib/codemirror/fullscreen.css" />
-    <link rel="stylesheet" href="/static/lib/codemirror/show-hint.css" />
-    <script
-      src="/static/lib/codemirror/codemirror.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/codemirror/show-hint.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/codemirror/python-hint.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/codemirror/fullscreen.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/codemirror/python.js"
-      type="text/javascript"
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  <meta name="description" content="Online Python Editor With Live Syntax Checking" />
+  <meta name="keywords" content="Lint,Online,Editor,Python,Syntax-Checking" />
+  <title>Block Python editor</title>
+  <!-- Blockly -->
+  <script src="/static/lib/blockly/blockly_compressed.js" type="text/javascript"></script>
+  <script src="/static/lib/blockly/blocks_compressed.js" type="text/javascript"></script>
+  <script src="/static/lib/blockly/msg/js/en.js" type="text/javascript"></script>
+  <script src="/static/lib/blockly/python_compressed.js" type="text/javascript"></script>
 
-    <!-- Skulpt -->
-    <script
-      src="/static/lib/skulpt/dist/skulpt.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="/static/lib/skulpt/dist/skulpt-stdlib.js"
-      type="text/javascript"
-    ></script>
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="/static/lib/codemirror/codemirror.css" />
+  <link rel="stylesheet" href="/static/lib/codemirror/fullscreen.css" />
+  <link rel="stylesheet" href="/static/lib/codemirror/show-hint.css" />
+  <script src="/static/lib/codemirror/codemirror.js" type="text/javascript"></script>
+  <script src="/static/lib/codemirror/show-hint.js" type="text/javascript"></script>
+  <script src="/static/lib/codemirror/python-hint.js" type="text/javascript"></script>
+  <script src="/static/lib/codemirror/fullscreen.js" type="text/javascript"></script>
+  <script src="/static/lib/codemirror/python.js" type="text/javascript"></script>
 
-    <!-- BlockMirror -->
-    <link rel="stylesheet" href="/static/lib/block_mirror/block_mirror.css" />
-    <script
-      src="/static/lib/block_mirror/block_mirror.js"
-      type="text/javascript"
-    ></script>
+  <!-- Skulpt -->
+  <script src="/static/lib/skulpt/dist/skulpt.js" type="text/javascript"></script>
+  <script src="/static/lib/skulpt/dist/skulpt-stdlib.js" type="text/javascript"></script>
 
-    <!-- 000000000000000000 -->
-    <!-- Scripts-->
-    <!-- <script src="/static/js/jquery.js" type="text/javascript"></script>
+  <!-- BlockMirror -->
+  <link rel="stylesheet" href="/static/lib/block_mirror/block_mirror.css" />
+  <script src="/static/lib/block_mirror/block_mirror.js" type="text/javascript"></script>
+
+  <!-- 000000000000000000 -->
+  <!-- Scripts-->
+  <!--<script src="/static/js/jquery.js" type="text/javascript"></script>
   <script src="/static/codemirror/lib/codemirror.js"></script>
   <script src="/static/codemirror/lib/python.js"></script>
   <script src="/static/codemirror/lib/lint.js"></script>
-  <script
-    src="/static/js/cm-validator-remote.js"
-    type="text/javascript"
-  ></script> -->
-    <!-- Codemirror Addons-->
-    <!-- <script src="/static/codemirror/addon/search.js"></script>
+  <script src="/static/js/cm-validator-remote.js" type="text/javascript"></script>-->
+  <!-- Codemirror Addons-->
+  <script src="/static/codemirror/addon/search.js"></script>
   <script src="/static/codemirror/addon/searchcursor.js"></script>
-  <script src="/static/codemirror/addon/dialog.js"></script> -->
-    <!-- Socket IO-->
-    <script src="/static/js/socket.io.js"></script>
-    <!-- Require.js-->
-    <script src="/static/js/require.min.js"></script>
-    <!--browser sidenav-->
-    <!-- <script src="/static/js/browser.js"></script> -->
-    <!-- Style  -->
-    <link
-      rel="stylesheet"
-      href="/static/css/bootstrap.min.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="/static/codemirror/lib/codemirror.css" />
-    <link rel="stylesheet" href="/static/codemirror/lib/lint.css" />
-    <link rel="stylesheet" href="/static/codemirror/addon/dialog.css" />
-    <!-- 0000000000000 -->
-    <!-- style -->
-    <link
-      rel="stylesheet"
-      href="/static/css/bootstrap.min.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
-    <link href="/static/html/video-js.css" rel="stylesheet" type="text/css" />
-  </head>
+  <script src="/static/codemirror/addon/dialog.js"></script>
+  <!-- Socket IO-->
+  <script src="/static/js/socket.io.js"></script>
+  <!-- Require.js-->
+  <script src="/static/js/require.min.js"></script>
+  <!--browser sidenav-->
+  <!--<script src="/static/js/browser.js"></script>-->
+  <!-- Style  -->
+  <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/static/codemirror/lib/codemirror.css" />
+  <link rel="stylesheet" href="/static/codemirror/lib/lint.css" />
+  <link rel="stylesheet" href="/static/codemirror/addon/dialog.css" />
+  <!-- 0000000000000 -->
+  <!-- style -->
+ <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" />-->
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+ <!-- <link href="/static/html/video-js.css" rel="stylesheet" type="text/css" />-->
 
-  <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark"
-      style="background-color: #aaaaaa"
-    >
-      <a class="navbar-brand hvr-shadow" href="/explorer/"
-        ><img src="/static/img/Robolab.svg" style="width: 50px; position: top"
-      /></a>
-      <input id="fname" type="text" value="{{loaded_code}}" />
-      <button
-        class="btn btn-success"
-        id="save"
-        type="button"
-        onclick="save_code();"
-      >
-        Save
-      </button>
+</head>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto mt-2 mb-2"></ul>
-      </div>
-    </nav>
-    <div id="app">
-      <div class="main">
-        <br />
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #aaaaaa">
+    <!--<a class="navbar-brand hvr-shadow" href="/explorer/"><img src="/static/img/Robolab.svg"
+        style="width: 50px; position: top" /></a>-->
+    <input id="fname" type="text" value="{{loaded_code}}" />
+    <button class="btn btn-success" id="save" type="button" onclick="save_code();">
+      Save
+    </button>
+    <button class="btn btn-success" id="run" type="button" onclick="run_code()">
+      Run</button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto mt-2 mb-2"></ul>
+    </div>
+  </nav>
+  <div id="app">
+    <div class="main">
+      <div class="grid grid-rows-2 gap-4">
         <div id="blockmirror-editor"></div>
-        <script>
-          const loadcode_url = "/download/{{loaded_code}}";
-        </script>
-        <br /><button
-          class="btn btn-success"
-          id="run"
-          type="button"
-          onclick="run_code()"
-        >
-          Run</button
-        ><br />
-        <div class="text-left mb-3">
-          <div id="output">
-            <h2>Output</h2>
-            <pre></pre>
-          </div>
-          <div
+        <div id="output">
+          <pre></pre>
+        </div>
+      </div>
+      
+      <!--<script>
+        const loadcode_url = "/download/{{loaded_code}}";
+      </script>-->
+      <!--<button class="btn btn-success" id="run" type="button" onclick="run_code()">
+        Run</button>-->
+      <!--<div class="text-left mb-3">
+        <div id="output">
+          <h2>Output</h2>
+          <pre></pre>
+        </div>
+      </div>-->
+        <!-- <div
             id="monitor"
             style="
               display: inline-block;
@@ -206,10 +140,10 @@
               "
               alt="img_output"
             />
-          </div>
-        </div>
-        <br />
-        <footer class="footer mt-auto py-3 bg-light">
+          </div> -->
+      
+      
+      <!-- <footer class="footer mt-auto py-3 bg-light">
           <div class="container">
             <div id="append_text" class="">
               <h2>Code analysis</h2>
@@ -229,12 +163,13 @@
               </table>
             </div>
           </div>
-        </footer>
+        </footer> -->
 
-        <br />
-        <!-- <script src="/static/js/javascript.js" type="text/javascript"></script> -->
-      </div>
+      
+      <!--  <script src="/static/js/javascript.js" type="text/javascript"></script>  -->
     </div>
-    <script src="/static/js/blockpy_script.js" type="text/javascript"></script>
-  </body>
+  </div>
+  <script src="/static/js/blockpy_script.js" type="text/javascript"></script>
+</body>
+
 </html>

@@ -287,9 +287,9 @@ async def after_request(request: Request, call_next):
 #     io.BytesIO(buffer),
 #     media_type='image/jpeg')
 
-# @app.get('/api')
-# async def api(request: Request):
-# 	return templates.TemplateResponse('api.pug', {'request': request,})
+@app.get('/api')
+async def api(request: Request):
+	return templates.TemplateResponse('api.pug', {'request': request,})
 ############################ login ###############
 def fake_hash_password(password: str):
     return "fakehashed" + password
@@ -792,22 +792,22 @@ async def run_code(request: Request,background_tasks: BackgroundTasks):
     return JSONResponse(content=json_compatible_item_data)
 def code_runner(cwd):
     print("path exist:",Path(cwd,session["file_name"]).is_file())
-    f=open(Path("/streaming"+session["file_name"]+".stdout"),"w")
-    f.write("START".center(24,"+")+"\n")
-    f.flush()
+    #f=open(Path("/streaming"+session["file_name"]+".stdout"),"w")
+    #f.write("START".center(24,"+")+"\n")
+    #f.flush()
     p = Popen(['python3' ,session["file_name"]], cwd=cwd,stdout=f, stderr=f, env=my_env)
-    session['process']=p
-    while(1):
-        poll = p.poll()
-        if poll is None:
-            print("running:",session["file_name"])
-        else:
-            print("done:",session["file_name"])
-            break
-        time.sleep(0.5)
+    #session['process']=p
+    # while(1):
+    #     poll = p.poll()
+    #     if poll is None:
+    #         print("running:",session["file_name"])
+    #     else:
+    #         print("done:",session["file_name"])
+    #         break
+    #     time.sleep(0.5)
     p.wait()
-    f.write("END".center(24,"+")+"\n")
-    f.close()
+    #f.write("END".center(24,"+")+"\n")
+    #f.close()
     session["busy"] =False
 # Slow down if user clicks "Run" too many times
 def slow():

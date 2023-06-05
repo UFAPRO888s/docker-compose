@@ -22,7 +22,7 @@ class Imgfile(BaseModel):
 class Json(BaseModel):
     res: Union[List[Any], Dict[AnyStr, Any]]
 # Initialize the Flask application
-# app = Flask(__name__)
+#app = Flask(__name__)
 app = FastAPI(openapi_url=None)
 app.mount('/imgstore', StaticFiles(directory='./imgstore'), name='imgstore')
 app.mount('/static', StaticFiles(directory='./server/static'), name='static')
