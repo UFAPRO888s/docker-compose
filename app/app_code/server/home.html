@@ -1,0 +1,175 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+
+
+<div id="view0_container" class="container" {{ default_view_css_1 }}>
+    <div class="row">
+        <h5></h5>
+    </div>
+
+    {% if ishome %} 
+    <div class="row">
+        <div class="col-md-2 col-sm-4 col-6 mt-2">
+            <div class="thumbnail hvr-shadow">
+                <a href="/explorer/<..>"><img src='/static/img/root-folder.svg' class='img-thumbnail' style="border:0px;" />
+                    <p style="color:black; text-align:center; text-decoration:none;">
+                        <p style="color:black;" data-toggle="tooltip" data-placement="right" title="home">
+                            home
+                        </p>
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% else %} 
+    <div class="row">
+        <div class="col-md-2 col-sm-4 col-6 mt-2">
+            <div class="thumbnail hvr-shadow">
+                <a href="/explorer/<..>"><img src='/static/img/up-folder.svg' class='img-thumbnail' style="border:0px;" />
+                    <p style="color:black; text-align:center; text-decoration:none;">
+                        <p style="color:black;" data-toggle="tooltip" data-placement="right" title="go up">
+                            go up
+                        </p>
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    
+        {% for k,dir_i in dir_dict.items() %}
+        <div class="col-md-2 col-sm-4 col-6 mt-2">
+            <div class="thumbnail hvr-shadow">
+
+
+                <a href="/explorer/{{dir_i.f_url}}"><img src='/static/img/{{dir_i.image}}' class='img-thumbnail'
+                        style="border:0px;" />
+                    <p style="color:black; text-align:center; text-decoration:none;">
+                        <p style="color:black;" data-toggle="tooltip" data-placement="right"
+                            title="{{dir_i.f_complete}}">
+                            {{ dir_i.f }}
+                        </p>
+                    </p>
+                </a>
+
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+
+    <div class="row mt-4">
+        <h5></h5>
+    </div>
+    <hr>
+
+    <div class="row">
+
+        {% for k,dir_i in file_dict.items() %}
+
+        <div class="col-md-2 col-sm-4 col-6 mt-2">
+
+            <a data-toggle="tooltip" data-placement="left" title="download" id="download"
+                href="/download/{{dir_i.f_url}}"><img src="/static/img/download.svg" style="width:15px;height:15px;"></a>
+
+            <div class="thumbnail hvr-shadow">
+
+
+                <a href="/python_editor/{{dir_i.f_url}}"><img src='/static/img/{{dir_i.image}}' class='img-thumbnail'
+                        style="border:0px;" />
+                    <p style="color:black; text-align:center; text-decoration:none;">
+                        <p style="color:black;" data-toggle="tooltip" data-placement="right"
+                            title="{{dir_i.f_complete}}">
+                            {{ dir_i.f }}
+                        </p>
+                    </p>
+                </a>
+
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+<div id="view1_container" class="container" {{ default_view_css_2 }}>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Created Time</th>
+            <th>Modified Time</th>
+            <th>Size</th>
+        </tr>
+        <tr>
+            <td>
+                {% if ishome %} 
+                <a href="/explorer/<..>">
+                    <img src='/static/img/root-folder.svg' style="position:absolute; height:25px; width:25px; border:0px;" />
+                    <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">home</p>
+                    </a>
+                {% else %} 
+                <a href="/explorer/<..>">
+                <img src='/static/img/up-folder.svg' style="position:absolute; height:25px; width:25px; border:0px;" />
+                <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">go up</p>
+                </a>
+                {% endif %}
+            </td>
+            <td>
+                <p style="margin-left:45px;">---</p>
+            </td>
+            <td>
+                <p style="margin-left:45px;">---</p>
+            </td>
+            <td>
+                <p style="margin-left:110px;">---</p>
+            </td>
+        </tr>
+        {% for k,dir_i in dir_dict.items() %}
+        <tr>
+            <td>
+                <a href="/explorer/{{dir_i.f_url}}">
+                <img src='/static/img/{{dir_i.image}}' style="position:absolute; height:25px; width:25px; border:0px;" />
+                <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">{{dir_i.f}}</p>
+                </a>
+            </td>
+            <td>
+                <p style="margin-left:45px;">{{dir_i.dtc}}</p>
+            </td>
+            <td>
+                <p style="margin-left:45px;">{{dir_i.dtm}}</p>
+            </td>
+            <td>
+                <p style="margin-left:110px;">{{dir_i.size}}</p>
+            </td>
+        </tr>
+        {% endfor %}
+        {% for k,dir_i in file_dict.items() %}
+        <tr>
+            <td>
+                <a href="/download/{{dir_i.f_url}}">
+                <img src='/static/img/{{dir_i.image}}' style="position:absolute; height:25px; width:25px; border:0px;" />
+                <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">{{dir_i.f}}</p>
+                </a>
+            </td>
+            <td>
+                <p style="margin-left:45px;">{{dir_i.dtc}}</p>
+            </td>
+            <td>
+                <p style="margin-left:45px;">{{dir_i.dtm}}</p>
+            </td>
+            <td>
+                <p style="margin-left:110px;">{{dir_i.size}}</p>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock content %}

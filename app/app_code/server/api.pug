@@ -1,0 +1,16 @@
+- import 'common.pug' as common
+doctype html
+html
+	head
+		+common.resources
+		title API SERVER
+	body
+		#app(route="index")
+			nav#main-nav
+				ol.breadcrumb
+					li.breadcrumb-item.active Index
+					+common.menu_fontconfig
+			.index.container
+				.text-center.mb-3
+					h2 API SERVER
+				

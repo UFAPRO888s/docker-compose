@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+	<title>up-folder</title>
+	<defs>
+		<image  width="226" height="210" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOIAAADSAQMAAABtpI45AAAAAXNSR0IB2cksfwAAAAZQTFRF/5wA/8wAjIJ0vQAAAAJ0Uk5TAP9bkSK1AAABA0lEQVR4nO3YsQ2DMBCFYaMUKT0CozAaHs2jeARKCoQTA4Fz7u5RIJQUd+2HlB+U6jnnfC6XnHz9orOMj7xeFNVvOojabjqBn32fqB/MQcBm1wSS5axDR0Gfu0rfw+8qRbeHRqhCdHeoEE1UiO4PFaKJCtFUA1QeTZVHU+V/AIJCNFUeXWmEyqIrZd+yUhZdKcuqNUD9zsr8sJKHdI1QB6gT1BlqxhqhJqjDBR2hThd0hprv0/AjjaampqampqampqampqamprdpuFH7P1R3oh3UVsf5TL2uE12J2Y10YWY3nGmja4KzWhkcO1XLUNhquOyv6gsvI6kaneBCua6gSlYZIF/OpxIsDPGQWwAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Path 0" href="#img1" x="15" y="23"/>
+</svg>

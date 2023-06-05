@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+	<title>up-folder</title>
+	<defs>
+		<image  width="226" height="210" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOIAAADSAQMAAABtpI45AAAAAXNSR0IB2cksfwAAAAZQTFRF/5wA/8wAjIJ0vQAAAAJ0Uk5TAP9bkSK1AAABA0lEQVR4nO3YsQ2DMBCFYaMUKT0CozAaHs2jeARKCoQTA4Fz7u5RIJQUd+2HlB+U6jnnfC6XnHz9orOMj7xeFNVvOojabjqBn32fqB/MQcBm1wSS5axDR0Gfu0rfw+8qRbeHRqhCdHeoEE1UiO4PFaKJCtFUA1QeTZVHU+V/AIJCNFUeXWmEyqIrZd+yUhZdKcuqNUD9zsr8sJKHdI1QB6gT1BlqxhqhJqjDBR2hThd0hprv0/AjjaampqampqampqampqamprdpuFH7P1R3oh3UVsf5TL2uE12J2Y10YWY3nGmja4KzWhkcO1XLUNhquOyv6gsvI6kaneBCua6gSlYZIF/OpxIsDPGQWwAAAABJRU5ErkJggg=="/>
+		<image  width="226" height="210" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOIAAADSAQMAAABtpI45AAAAAXNSR0IB2cksfwAAAAZQTFRF/5wA/5YAzNbBYwAAAAJ0Uk5TAP9bkSK1AAABA0lEQVR4nO3YsQ2DMBCFYaMUKT0CozAaHs2jeARKCoQTA4Fz7u5RIJQUd+2HlB+U6jnnfC6XnHz9orOMj7xeFNVvOojabjqBn32fqB/MQcBm1wSS5axDR0Gfu0rfw+8qRbeHRqhCdHeoEE1UiO4PFaKJCtFUA1QeTZVHU+V/AIJCNFUeXWmEyqIrZd+yUhZdKcuqNUD9zsr8sJKHdI1QB6gT1BlqxhqhJqjDBR2hThd0hprv0/AjjaampqampqampqampqamprdpuFH7P1R3oh3UVsf5TL2uE12J2Y10YWY3nGmja4KzWhkcO1XLUNhquOyv6gsvI6kaneBCua6gSlYZIF/OpxIsDPGQWwAAAABJRU5ErkJggg=="/>
+		<image  width="77" height="85" id="img3" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABVCAMAAAA7Upl0AAAAAXNSR0IB2cksfwAAAEJQTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjuH28gAAABZ0Uk5TABC/rzDv/89gUJ+AQLCQ8OCgcMDQII6BWaQAAAFWSURBVHic7dnbkoMgDAZg2FpKK21V7Pu/6qJVpwdK/kAutrPkOn6MGYxBlUJC/+w0lIhEszfm0Ahh1kyxl+HuWOCOAtjJbGElsWJO74wR4/TBvMRJEivgYlg210SxTG56AMS4z1gGl8LYXBoLPYDTUiiMxdEYg0MwmMMwkEMxiMMxgONgJMfDCI6LJTk+luBysI+cpa/EuVwsyuVjEa4Ee+PKsBeuFHviyrEHTgLbOBls4aSwmTuKYYFTraBmqvYnNLntNmmualWrWtW+Sjs75y5XIa2bRwINcIh2vo8rvYzWwsMPQwMylaJzhuUAIKO5Zc6r2j/UrtiKoOaVGkU1/83auGodoJFty68auW5oNuTg23M0sgkOq0behQPa1vbtfqAyp0MgseG2sqkbgc0l0cl6jA8n9nRR1sym7b33b2+4zvvL8z+Fm21DYmSneN9buX8tS/wCjih2uUn/QWkAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Path 0" href="#img1" x="15" y="23"/>
+	<use id="Path 0 copy" href="#img2" x="15" y="23"/>
+	<use id="Path 0" href="#img3" x="85" y="86"/>
+</svg>

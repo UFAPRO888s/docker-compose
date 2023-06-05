@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <g style="">
+    <title>unknown</title>
+    <path d="M 500 250 C 500 388.071 388.071 500 250 500 C 111.929 500 0 388.071 0 250 C 0 111.929 111.929 0 250 0 C 388.071 0 500 111.929 500 250 Z" style="fill: rgb(75, 131, 193);"/>
+    <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 21.7px; paint-order: fill; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 2; stroke-width: 0.205043px; white-space: pre;" transform="matrix(13.423164, 0, 0, 15.838955, -1751.423096, -4579.091797)"><tspan x="143.068" y="312.422" style="vector-effect: non-scaling-stroke;">?</tspan></text>
+  </g>
+</svg>

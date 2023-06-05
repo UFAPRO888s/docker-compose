@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Currently unavailable</title>
+  </head>
+  <body>
+    <h1>I'm currently unavailable (code 502)</h1>
+
+    <p>Wait a sec.I'm loading.</p>
+
+    <noscript
+      >Your browser doesn’t support javascript. Please try refreshing the page
+      manually every few minutes.</noscript
+    >
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script>
+      /* Set starting and maximum retry times in seconds */
+      var retry_current = 0, // first refresh at 8 seconds
+        retry_max = 4096, // refresh time truncated at about 68 minutes
+        reload=function(){window.location.reload(true);}
+        check_response = function () {
+          $.ajax({
+            url: window.location.href,
+            type: "HEAD",
+            complete: function (jqXHR) {
+                console.log('current response:', jqXHR.status);
+              if (jqXHR.status != 502) {
+                reload();
+              } else if (retry_current < retry_max) {
+                retry_current++;
+                setTimeout(check_response, 1000);
+              }
+            },
+          });
+        };
+      setTimeout(check_response, 1000);
+    </script>
+  </body>
+</html>

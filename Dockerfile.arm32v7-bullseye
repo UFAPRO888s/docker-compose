@@ -1,0 +1,223 @@
+# FROM ubuntu:18.04
+# FROM balenalib/raspberrypi3-python:latest-Bullseye-build
+FROM arm32v7/debian:bullseye-slim
+# FROM balenalib/orange-pi-lite-debian-python:latest
+
+#Enforces cross-compilation through Quemu
+# RUN [ "cross-build-start" ]
+
+RUN apt-get update -y && apt-get install -y \
+    sudo \
+    build-essential \
+    curl \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    wget \
+    python3 \
+    python3-pip \
+    python3-dev \
+    git \
+    tar \
+    libatlas-base-dev
+RUN apt-get update -y && apt-get install -y apt-utils
+RUN apt-get install -y locales locales-all
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+RUN sudo apt-get update -y && apt-get install -y --no-install-recommends \
+        build-essential \
+        autoconf \
+        automake \
+        libtool \
+        pkg-config \
+        ca-certificates \
+        wget \
+        git \
+        curl \
+        libjpeg-dev \
+        libpng-dev \
+        # language-pack-en \
+        # locales \
+        # locales-all \
+        python3 \
+        python3-dev \
+        # python3-pip \
+        # python3-numpy \
+        python3-setuptools \
+        libsm6 libxext6 \
+        libxrender-dev\
+        ffmpeg \
+        # libsm6 \
+        # libxext6 \
+        libprotobuf-dev \
+        protobuf-compiler \
+        zlib1g-dev \
+        swig \
+        vim \
+        gdb \
+        valgrind \
+        # libsm6 \
+        # libxext6 \
+        # libxrender-dev \
+        cmake \
+        unzip \
+        sudo
+
+# RUN apt-get update -y && apt-get install -y python3-dev python3-numpy
+RUN apt-get update -y && apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
+RUN apt-get update -y && apt-get install -y libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
+RUN apt-get update -y && apt-get install -y libgtk-3-dev 
+RUN apt-get update -y && apt-get install -y libpng-dev libopenexr-dev libtiff-dev libwebp-dev
+RUN apt-get update -y && apt-get install -y cmake g++ wget unzip
+
+RUN wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py --progress=bar:force
+RUN python3 get-pip.py --force-reinstall
+RUN pip3 -V
+
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade setuptools
+RUN pip3 install --upgrade wheel
+RUN pip3 install numpy
+RUN pip3 install --user imutils
+# 
+
+
+ARG NUM_JOBS=16
+# # Build the latest cmake
+ARG CMAKE_VERSION=3.23.4
+WORKDIR /code
+RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}.tar.gz -O cmake-${CMAKE_VERSION}.tar.gz --progress=bar:force && \
+    tar zxf cmake-${CMAKE_VERSION}.tar.gz && \
+    rm cmake-${CMAKE_VERSION}.tar.gz
+
+WORKDIR /code/cmake-${CMAKE_VERSION}
+RUN ./configure --system-curl
+RUN make -j${NUM_JOBS}
+RUN sudo make install
+
+# Build and install opencv
+ARG OPENCV_VERSION=4.6.0
+RUN cd /tmp && \
+    wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip --progress=bar:force && \
+    wget https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip -O opencv_contrib.zip --progress=bar:force && \
+    unzip opencv.zip && \
+    unzip opencv_contrib.zip && \
+    mkdir -p build && cd build && \
+    cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-${OPENCV_VERSION}/modules ../opencv-${OPENCV_VERSION} && \
+    # cmake --build . --parallel ${NUM_JOBS} && \
+    cmake --build . -j${NUM_JOBS} && \
+    # cmake --build . && \
+    make install && \
+    rm -rf /tmp/*
+
+# RUN pip3 install opencv-python
+# RUN pip3 install opencv-contrib-python
+# RUN pip3 install numpy
+
+
+# RUN pip3 install --upgrade setuptools pip --user
+# RUN apt-get update && apt-get install -y zlib1g
+ARG ZLIB_VERSION=1.2.0.4
+# ARG ZLIB_VERSION=1.2.7.3
+
+RUN cd /tmp && \
+    wget http://www.zlib.net/fossils/zlib-${ZLIB_VERSION}.tar.gz && \
+    tar -xvzf zlib-${ZLIB_VERSION}.tar.gz && \
+    cd zlib-${ZLIB_VERSION} && \
+    ./configure --prefix=/usr/local/zlib && \
+    make install && \
+    rm -rf /tmp/*
+
+
+# RUN git clone https://github.com/onnx/onnx.git && \
+#     cd onnx && \
+#     git submodule update --init --recursive && \
+#     # Optional: prefer lite proto
+#     export CMAKE_ARGS=-DONNX_USE_LITE_PROTO=ON && \
+#     pip3 install -e . 
+
+
+
+
+# RUN pip3 install onnx 
+
+# RUN pip3 install protobuf<4.21.3
+# RUN cd /tmp && \
+#     curl -L https://github.com/protocolbuffers/protobuf/releases/download/v2.4.1/protobuf-2.4.1.tar.bz2 | tar xj && \
+#     cd protobuf-2.4.1/ && \
+#     ./configure --with-zlib CXX='g++ -m32 -std=c++98' && \
+#     make install  && \
+#     rm -rf /tmp/*
+RUN apt-get install python3-protobuf -y
+# RUN pip3 install onnxruntime-gpu
+# RUN pip3 install onnx>=1.9.0
+# RUN pip3 install onnxruntime
+# RUN pip3 install onnx-simplifier>=0.3.6 --user
+COPY ./dependency/ /tmp
+WORKDIR /tmp
+RUN pip3 install onnx-1.12.0-cp39-cp39-linux_armv7l.whl
+RUN pip3 install onnxruntime-1.8.1-cp39-cp39-linux_armv7l.whl
+# RUN pip3 install onnxruntime-1.12.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+# RUN pip3 install onnxruntime
+
+# # # Set up build args
+# ARG REPO_URL=https://github.com/onnx/onnx
+# ARG BRANCH=main
+# WORKDIR /code
+
+
+# WORKDIR /code
+# RUN git clone --single-branch --branch ${BRANCH} --recursive ${REPO_URL} onnx
+
+# # Start the basic build
+# WORKDIR /code/onnx
+# RUN python3 setup.py bdist_wheel
+
+# # Build Output
+# RUN realpath /code/onnx/dist/onnx-*.whl
+
+
+# ARG BUILDTYPE=MinSizeRel
+# ARG BUILDARGS="--config ${BUILDTYPE} --arm"
+
+# ARG ONNXRUNTIME_REPO=https://github.com/Microsoft/onnxruntime
+# # ARG ONNXRUNTIME_SERVER_BRANCH=main
+# # # ARG ONNXRUNTIME_SERVER_BRANCH=master
+# # # Prepare onnxruntime Repo
+# WORKDIR /code
+# # RUN git clone --single-branch --branch ${ONNXRUNTIME_SERVER_BRANCH} --recursive ${ONNXRUNTIME_REPO} onnxruntime
+# RUN git clone --recursive ${ONNXRUNTIME_REPO}
+# # # Start the basic build
+# WORKDIR /code/onnxruntime
+# RUN ./build.sh --config MinSizeRel --update --build
+# RUN ./build.sh --config MinSizeRel --build_shared_lib
+# RUN ./build.sh --config MinSizeRel --enable_pybind --build_wheel
+# RUN ls -l /code/onnxruntime/build/Linux/MinSizeRel/*.so
+# RUN ls -l /code/onnxruntime/build/Linux/MinSizeRel/dist/*.whl
+####################
+# RUN ./build.sh ${BUILDARGS} --update --build
+
+# # Build Shared Library
+# RUN ./build.sh ${BUILDARGS} --build_shared_lib
+
+# # Build Python Bindings and Wheel
+# RUN ./build.sh ${BUILDARGS} --enable_pybind --build_wheel
+
+# # Build Output
+# RUN ls -l /code/onnxruntime/build/Linux/${BUILDTYPE}/*.so
+# RUN ls -l /code/onnxruntime/build/Linux/${BUILDTYPE}/dist/*.whl
+
+# RUN apt-get update -y && apt-get install -y python3-pip python3-dev libsm6 libxext6 libxrender-dev
+# RUN apt-get install ffmpeg libsm6 libxext6  -y
+COPY ./requirements.txt /app/requirements.txt
+WORKDIR /app
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
+
+# RUN apt-get install wget -y
+# RUN wget https://pjreddie.com/media/files/yolov3.weights
+COPY . /app
+WORKDIR /app
+# RUN [ "cross-build-end" ]
+CMD ["/app/spinner.py"]
+ENTRYPOINT [ "python3"]

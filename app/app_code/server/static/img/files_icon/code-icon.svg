@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <g style="">
+    <title>code</title>
+    <path style="fill: rgb(0, 161, 224);" d="M 130 0 L 290 0 L 290 150 L 440 150 L 440 430 C 440 468.66 408.66 500 370 500 L 130 500 C 91.34 500 60 468.66 60 430 L 60 70 C 60 31.34 91.34 0 130 0 Z"/>
+    <path d="M 290.001 0.001 L 440.001 150.001 L 290.001 150.001 L 290.001 0.001 Z" style="fill: rgb(77, 189, 233);" transform="matrix(1, -0.000016, 0.000016, 1, -0.0012, 0.00584)"/>
+    <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 21.7px; stroke: rgb(255, 255, 255); stroke-width: 1.89223px; white-space: pre;" transform="matrix(7.455646, 0, 0, 7.341719, -893.169617, -1988.338989)" x="143.068" y="312.422">{ }</text>
+  </g>
+</svg>
