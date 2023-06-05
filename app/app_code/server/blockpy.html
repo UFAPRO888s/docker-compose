@@ -56,6 +56,7 @@
   <!-- <link href="/static/html/video-js.css" rel="stylesheet" type="text/css" />-->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.3/dist/full.css" rel="stylesheet" type="text/css" />
+
   <style>
     .F8A356 {
       background-color: #F8A356;
@@ -69,6 +70,13 @@
 
     .blocklyScrollbarVertical.blocklyFlyoutScrollbar {
       display: none;
+    }
+    .blocklyToolboxDiv.blocklyNonSelectable{
+    padding: 10px 20px 10px 20px;
+    background-color: #FFF495;
+    }
+    #blockly{
+      padding: 10px 20px 10px 20px;
     }
   </style>
 </head>
@@ -90,20 +98,23 @@
             <div id="showIcon"></div>
           </div>
         </div>
-        <div class="h-96 w-full rounded-3xl bg-[#EAEAE0]">
-          <div class="flex h-96 flex-wrap justify-center gap-2 overflow-y-auto py-4">
-                <div id="iconList"></div>
+        <div className="h-96 w-full rounded-3xl bg-[#EAEAE0]">
+          <div className="flex h-96 flex-wrap justify-center gap-2 overflow-y-auto py-4">
+            <div id="iconList"></div>
+
           </div>
-          <div></div>
         </div>
+       
       </div>
       <div class="py-8 modal-action ">
-        <button class="btn rounded-3xl bg-[#1DC690] px-20 py-2 text-2xl font-bold text-white shadow-md hover:bg-blue-500 hover:text-slate-100 focus-visible:outline-blue-600 active:bg-blue-800 active:text-blue-100">
+        <button
+          class="btn rounded-3xl bg-[#1DC690] px-20 py-2 text-2xl font-bold text-white shadow-md hover:bg-blue-500 hover:text-slate-100 focus-visible:outline-blue-600 active:bg-blue-800 active:text-blue-100">
           เสร็จสิ้น
         </button>
       </div>
     </div>
   </dialog>
+
   <nav class="F8A356 navbar flex justify-between">
 
     <div class="flex gap-4">
@@ -120,10 +131,10 @@
         id="run" type="button">
         <!--onclick="run_code()"-->
         Run</button>
-      <a href="https://robotweb.netlify.app/icon"><button
+      <button onclick="my_modal_4.showModal()"
         class="btn btn-accent cursor-pointer rounded-3xl bg-pink-600 px-8 text-white hover:bg-blue-500 hover:text-slate-100 focus-visible:outline-blue-600 active:bg-blue-800 active:text-blue-100"
         type="button">Icon
-      </button></a>
+      </button>
       <!-- onclick="my_modal_4.showModal()"-->
       <script>
         const loadcode_url = "/download/{{loaded_code}}";
@@ -152,95 +163,10 @@
             </tr>
           </table>
         </div>
-        <!--<div class="flex w-full">
-          <div id="output" class="bg-[#EEEEEE] rounded-3xl p-10">
-            <h2 class="text-lg font-bold">OUTPUT</h2>
-            <pre></pre>
-          </div>
-        </div>-->
       </div>
-
-
-      <!--<button class="btn btn-success" id="run" type="button" onclick="run_code()">
-        Run</button>-->
-      <!--<div class="text-left mb-3">
-        <div id="output">
-          <h2>Output</h2>
-          <pre></pre>
-        </div>
-      </div>-->
-      <!-- <div
-            id="monitor"
-            style="
-              display: inline-block;
-              vertical-align: top;
-              margin: 0px;
-              padding: 0px;
-              overflow: hidden;
-            "
-          >
-            <iframe
-              src="/static/html/player3.html"
-              marginheight="0"
-              frameborder="0"
-              style="
-                overflow: hidden;
-                overflow-x: hidden;
-                overflow-y: hidden;
-                width: 320px;
-                height: 240px;
-                display: inline-block;
-                vertical-align: top;
-              "
-              height="100%"
-              width="100%"
-              scrolling="No"
-            ></iframe>
-            <img
-              id="output_img"
-              src="/static/img/notexist.svg"
-              style="
-                width: 320px;
-                height: 240px;
-                display: inline-block;
-                vertical-align: top;
-              "
-              alt="img_output"
-            />
-          </div> -->
-
-
-      <!-- <footer class="footer mt-auto py-3 bg-light">
-          <div class="container">
-            <div id="append_text" class="">
-              <h2>Code analysis</h2>
-              <table
-                class="table"
-                id="errorslist"
-                style="display: inline-block"
-              >
-                <tr>
-                  <th>Line</th>
-                  <th>Severity</th>
-                  <th>Error</th>
-                  <th>Tips</th>
-                  <th>Error Code</th>
-                  <th>Error Info</th>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </footer> -->
-
-
-      <!--  <script src="/static/js/javascript.js" type="text/javascript"></script>  -->
     </div>
   </div>
-  <script>
-    fetch('/static/icon.json').then((response) => response.json()).then((json) => {
-        console.log(json)
-        })
-  </script>
+
   <script src="/static/js/blockpy_script.js" type="text/javascript"></script>
 </body>
 

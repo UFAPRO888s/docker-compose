@@ -1,0 +1,283 @@
+from requests import session
+from pylint_errors.pylint_errors import pylint_dict_final
+from flask import Flask, render_template, request, jsonify, session
+from flask_socketio import SocketIO
+from fastapi import FastAPI, Request, HTTPException, File,Form, UploadFile
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse, FileResponse,StreamingResponse
+from fastapi_socketio import SocketManager
+from pydantic import BaseModel
+
+
+
+
+# import eventlet.wsgi
+import tempfile, mmap, os, re
+from datetime import datetime, timezone
+from pylint import epylint as lint
+from subprocess import Popen, PIPE, STDOUT
+from multiprocessing import Pool, cpu_count
+
+class Code(BaseModel):
+    text: str
+
+def is_os_linux():
+    if os.name == "nt":
+        return False
+    return True
+
+app = FastAPI(openapi_url=None)
+app.mount('/imgstore', StaticFiles(directory='./imgstore'), name='imgstore')
+app.mount('/static', StaticFiles(directory='./server/static'), name='static')
+
+templates = Jinja2Templates(directory='./server')
+templates.env.globals["urlpath"] = app.url_path_for
+templates.env.trim_blocks = True
+templates.env.lstrip_blocks = True
+templates.env.autoescape = False
+templates.env.add_extension('pypugjs.ext.jinja.PyPugJSExtension')
+
+num_cores = cpu_count()
+session=dict()
+@app.route('/')
+async def index(request: Request):
+    """Display home page
+        :return: index.html
+
+        Initializes session variables for tracking time between running code.
+    """
+    session["count"] = 0
+    session["time_now"] = datetime.now(timezone.utc)
+    # return render_template("index.html")
+    return templates.TemplateResponse('editor_index.pug', {'request': request,})
+
+
+@app.post('/check_code')
+# def check_code(code: str = Form()):
+def check_code(text: str= Form()):
+
+    """Run pylint on code and get output
+        :return: JSON object of pylint errors
+            {
+                {
+                    "code":...,
+                    "error": ...,
+                    "message": ...,
+                    "line": ...,
+                    "error_info": ...,
+                }
+                ...
+            }
+
+        For more customization, please look at Pylint's library code:
+        https://github.com/PyCQA/pylint/blob/master/pylint/lint.py
+    """
+    # Session to handle multiple users at one time and to get textarea from AJAX call
+    session["code"] = text
+    text = session["code"]
+    output = evaluate_pylint(text)
+
+    #MANAGER.astroid_cache.clear()
+    #return jsonify(output)
+    json_compatible_item_data = jsonable_encoder(output)
+    return JSONResponse(content=json_compatible_item_data)
+
+# Run python in secure system
+@app.post('/run_code')
+def run_code(text: str = Form()):
+    """Run python 3 code
+        :return: JSON object of python 3 output
+            {
+                ...
+            }
+    """
+    # Don't run too many times
+    if slow():
+        warning=("Running code too much within a short time period. Please wait a few seconds before clicking \"Run\" each time.")
+        json_compatible_item_data = jsonable_encoder(warning)
+        return JSONResponse(content=json_compatible_item_data)
+    session["time_now"] = datetime.now(timezone.utc)
+
+    output = None
+    # if not "file_name" in session:
+    #     with tempfile.NamedTemporaryFile(delete=False) as temp:
+    #         session["file_name"] = temp.name
+    write_temp(text)
+    cmd = 'python ' + session["file_name"]
+    p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE,
+              stderr=STDOUT, close_fds=True)
+    output = p.stdout.read()
+
+    # return jsonify(output.decode('utf-8'))
+    json_compatible_item_data = jsonable_encoder(output.decode('utf-8'))
+    return JSONResponse(content=json_compatible_item_data)
+
+# Slow down if user clicks "Run" too many times
+def slow():
+    session["count"] += 1
+    time = datetime.now(timezone.utc) - session["time_now"]
+    if float(session["count"]) / float(time.total_seconds()) > 2:
+        return True
+    return False
+
+
+def write_temp(text):
+    if "file_name" in session:
+        f = open(session["file_name"], "w")
+        for t in text:
+            f.write(t)
+        f.flush()
+    else:
+        with tempfile.NamedTemporaryFile(delete=False) as temp:
+            session["file_name"] = temp.name
+            for t in text:
+                temp.write(t.encode("utf-8"))
+            temp.flush()
+
+def evaluate_pylint(text):
+    """Create temp files for pylint parsing on user code
+
+    :param text: user code
+    :return: dictionary of pylint errors:
+        {
+            {
+                "code":...,
+                "error": ...,
+                "message": ...,
+                "line": ...,
+                "error_info": ...,
+            }
+            ...
+        }
+    """
+    # Open temp file for specific session.
+    # IF it doesn't exist (aka the key doesn't exist), create one
+    write_temp(text)
+
+    try:
+        ARGS = " -r n --disable=R,C"
+        (pylint_stdout, pylint_stderr) = lint.py_run(
+            session["file_name"] + ARGS, return_std=True)
+    except Exception as e:
+        raise Exception(e)
+
+    if pylint_stderr.getvalue():
+        raise Exception("Issue with pylint configuration")
+
+    return format_errors(pylint_stdout.getvalue())
+
+def process_error(error):
+    """Formats error message into dictionary
+
+        :param error: pylint error full text
+        :return: dictionary of error as:
+            {
+                "code":...,
+                "error": ...,
+                "message": ...,
+                "line": ...,
+                "error_info": ...,
+            }
+    """
+    # Return None if not an error or warning
+    if error == " " or error is None:
+        return None
+    if error.find("Your code has been rated at") > -1:
+        return None
+
+    list_words = error.split()
+    if len(list_words) < 3:
+        return None
+
+    # Detect OS
+    line_num = None
+    if is_os_linux():
+        try:
+            line_num = error.split(":")[1]
+        except Exception as e:
+            print(os.name + " not compatible: " + e)
+    else:
+        line_num = error.split(":")[2]
+
+    # list_words.pop(0)
+    error_yet, message_yet, first_time = False, False, True
+    i, length = 0, len(list_words)
+    # error_code=None
+    while i < length:
+        word = list_words[i]
+        if (word == "error" or word == "warning") and first_time:
+            error_yet = True
+            first_time = False
+            i += 1
+            continue
+        if error_yet:
+            error_code = word[1:-1]
+            error_string = list_words[i + 1][:-1]
+            i = i + 3
+            error_yet = False
+            message_yet = True
+            continue
+        if message_yet:
+            full_message = ' '.join(list_words[i:length - 1])
+            break
+        i += 1
+
+    error_info = pylint_dict_final[error_code]
+
+    return {
+        "code": error_code,
+        "error": error_string,
+        "message": full_message,
+        "line": line_num,
+        "error_info": error_info,
+    }
+
+def format_errors(pylint_text):
+    """Format errors into parsable nested dictionary
+
+    :param pylint_text: original pylint output
+    :return: dictionary of errors as:
+        {
+            {
+                "code":...,
+                "error": ...,
+                "message": ...,
+                "line": ...,
+                "error_info": ...,
+            }
+            ...
+        }
+    """
+    errors_list = pylint_text.splitlines(True)
+
+    # If there is not an error, return nothing
+    if "--------------------------------------------------------------------" in errors_list[1] and \
+            "Your code has been rated at" in errors_list[2] and "module" not in errors_list[0]:
+        return None
+
+    errors_list.pop(0)
+
+    pylint_dict = {}
+    try:
+        pool = Pool(num_cores)
+        pylint_dict = pool.map(process_error, errors_list)
+    finally:
+        pool.close()
+        pool.join()
+        return pylint_dict
+
+    return pylint_dict
+
+if __name__ == '__main__':
+    import uvicorn
+    import argparse
+
+    parser = argparse.ArgumentParser(description='editor server')
+    parser.add_argument('--port', type=int, default=8080)
+    parser.add_argument('--host', default='')
+    args = parser.parse_args()
+
+    uvicorn.run(app, host=args.host, port=args.port)
+

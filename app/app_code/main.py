@@ -706,7 +706,7 @@ async def python_file_editor(request: Request,var: str):
 async def save_code(request: Request):
     global currentDirectory
     TxtFile=await request.json()
-    print(TxtFile)
+    #print(TxtFile)
     fn=''
     if 'filename' in TxtFile.keys():
         if TxtFile['filename'] != '':
