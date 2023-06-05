@@ -654,6 +654,7 @@ async def custom_300_handler(request: Request, _):
 ########################## python editor ########################################
 @app.route("/blockpy")
 async def blockpy(request: Request):
+    print(request)
     return templates.TemplateResponse("blockpy.html", {"request": request,"loaded_code":""})
 @app.get("/blockpy/{var}")
 async def blockpy(request: Request,var: str):

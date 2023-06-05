@@ -1,0 +1,1170 @@
+[
+    {
+        "id": 1,
+        "code": "academic-cap.svg"
+    },
+    {
+        "id": 2,
+        "code": "adjustments-horizontal.svg"
+    },
+    {
+        "id": 3,
+        "code": "adjustments-vertical.svg"
+    },
+    {
+        "id": 4,
+        "code": "archive-box-arrow-down.svg"
+    },
+    {
+        "id": 5,
+        "code": "archive-box-x-mark.svg"
+    },
+    {
+        "id": 6,
+        "code": "archive-box.svg"
+    },
+    {
+        "id": 7,
+        "code": "arrow-down-circle.svg"
+    },
+    {
+        "id": 8,
+        "code": "arrow-down-left.svg"
+    },
+    {
+        "id": 9,
+        "code": "arrow-down-on-square-stack.svg"
+    },
+    {
+        "id": 10,
+        "code": "arrow-down-on-square.svg"
+    },
+    {
+        "id": 11,
+        "code": "arrow-down-right.svg"
+    },
+    {
+        "id": 12,
+        "code": "arrow-down-tray.svg"
+    },
+    {
+        "id": 13,
+        "code": "arrow-down.svg"
+    },
+    {
+        "id": 14,
+        "code": "arrow-left-circle.svg"
+    },
+    {
+        "id": 15,
+        "code": "arrow-left-on-rectangle.svg"
+    },
+    {
+        "id": 16,
+        "code": "arrow-left.svg"
+    },
+    {
+        "id": 17,
+        "code": "arrow-long-down.svg"
+    },
+    {
+        "id": 18,
+        "code": "arrow-long-left.svg"
+    },
+    {
+        "id": 19,
+        "code": "arrow-long-right.svg"
+    },
+    {
+        "id": 20,
+        "code": "arrow-long-up.svg"
+    },
+    {
+        "id": 21,
+        "code": "arrow-path-rounded-square.svg"
+    },
+    {
+        "id": 22,
+        "code": "arrow-path.svg"
+    },
+    {
+        "id": 23,
+        "code": "arrow-right-circle.svg"
+    },
+    {
+        "id": 24,
+        "code": "arrow-right-on-rectangle.svg"
+    },
+    {
+        "id": 25,
+        "code": "arrow-right.svg"
+    },
+    {
+        "id": 26,
+        "code": "arrow-small-down.svg"
+    },
+    {
+        "id": 27,
+        "code": "arrow-small-left.svg"
+    },
+    {
+        "id": 28,
+        "code": "arrow-small-right.svg"
+    },
+    {
+        "id": 29,
+        "code": "arrow-small-up.svg"
+    },
+    {
+        "id": 30,
+        "code": "arrow-top-right-on-square.svg"
+    },
+    {
+        "id": 31,
+        "code": "arrow-trending-down.svg"
+    },
+    {
+        "id": 32,
+        "code": "arrow-trending-up.svg"
+    },
+    {
+        "id": 33,
+        "code": "arrow-up-circle.svg"
+    },
+    {
+        "id": 34,
+        "code": "arrow-up-left.svg"
+    },
+    {
+        "id": 35,
+        "code": "arrow-up-on-square-stack.svg"
+    },
+    {
+        "id": 36,
+        "code": "arrow-up-on-square.svg"
+    },
+    {
+        "id": 37,
+        "code": "arrow-up-right.svg"
+    },
+    {
+        "id": 38,
+        "code": "arrow-up-tray.svg"
+    },
+    {
+        "id": 39,
+        "code": "arrow-up.svg"
+    },
+    {
+        "id": 40,
+        "code": "arrow-uturn-down.svg"
+    },
+    {
+        "id": 41,
+        "code": "arrow-uturn-left.svg"
+    },
+    {
+        "id": 42,
+        "code": "arrow-uturn-right.svg"
+    },
+    {
+        "id": 43,
+        "code": "arrow-uturn-up.svg"
+    },
+    {
+        "id": 44,
+        "code": "arrows-pointing-in.svg"
+    },
+    {
+        "id": 45,
+        "code": "arrows-pointing-out.svg"
+    },
+    {
+        "id": 46,
+        "code": "arrows-right-left.svg"
+    },
+    {
+        "id": 47,
+        "code": "arrows-up-down.svg"
+    },
+    {
+        "id": 48,
+        "code": "at-symbol.svg"
+    },
+    {
+        "id": 49,
+        "code": "backspace.svg"
+    },
+    {
+        "id": 50,
+        "code": "backward.svg"
+    },
+    {
+        "id": 51,
+        "code": "banknotes.svg"
+    },
+    {
+        "id": 52,
+        "code": "bars-2.svg"
+    },
+    {
+        "id": 53,
+        "code": "bars-3-bottom-left.svg"
+    },
+    {
+        "id": 54,
+        "code": "bars-3-bottom-right.svg"
+    },
+    {
+        "id": 55,
+        "code": "bars-3-center-left.svg"
+    },
+    {
+        "id": 56,
+        "code": "bars-3.svg"
+    },
+    {
+        "id": 57,
+        "code": "bars-4.svg"
+    },
+    {
+        "id": 58,
+        "code": "bars-arrow-down.svg"
+    },
+    {
+        "id": 59,
+        "code": "bars-arrow-up.svg"
+    },
+    {
+        "id": 60,
+        "code": "battery-0.svg"
+    },
+    {
+        "id": 61,
+        "code": "battery-100.svg"
+    },
+    {
+        "id": 62,
+        "code": "battery-50.svg"
+    },
+    {
+        "id": 63,
+        "code": "beaker.svg"
+    },
+    {
+        "id": 64,
+        "code": "bell-alert.svg"
+    },
+    {
+        "id": 65,
+        "code": "bell-slash.svg"
+    },
+    {
+        "id": 66,
+        "code": "bell-snooze.svg"
+    },
+    {
+        "id": 67,
+        "code": "bell.svg"
+    },
+    {
+        "id": 68,
+        "code": "bolt-slash.svg"
+    },
+    {
+        "id": 69,
+        "code": "bolt.svg"
+    },
+    {
+        "id": 70,
+        "code": "book-open.svg"
+    },
+    {
+        "id": 71,
+        "code": "bookmark-slash.svg"
+    },
+    {
+        "id": 72,
+        "code": "bookmark-square.svg"
+    },
+    {
+        "id": 73,
+        "code": "bookmark.svg"
+    },
+    {
+        "id": 74,
+        "code": "briefcase.svg"
+    },
+    {
+        "id": 75,
+        "code": "bug-ant.svg"
+    },
+    {
+        "id": 76,
+        "code": "building-library.svg"
+    },
+    {
+        "id": 77,
+        "code": "building-office-2.svg"
+    },
+    {
+        "id": 78,
+        "code": "building-office.svg"
+    },
+    {
+        "id": 79,
+        "code": "building-storefront.svg"
+    },
+    {
+        "id": 80,
+        "code": "cake.svg"
+    },
+    {
+        "id": 81,
+        "code": "calculator.svg"
+    },
+    {
+        "id": 82,
+        "code": "calendar-days.svg"
+    },
+    {
+        "id": 83,
+        "code": "calendar.svg"
+    },
+    {
+        "id": 84,
+        "code": "camera.svg"
+    },
+    {
+        "id": 85,
+        "code": "chart-bar-square.svg"
+    },
+    {
+        "id": 86,
+        "code": "chart-bar.svg"
+    },
+    {
+        "id": 87,
+        "code": "chart-pie.svg"
+    },
+    {
+        "id": 88,
+        "code": "chat-bubble-bottom-center-text.svg"
+    },
+    {
+        "id": 89,
+        "code": "chat-bubble-bottom-center.svg"
+    },
+    {
+        "id": 90,
+        "code": "chat-bubble-left-ellipsis.svg"
+    },
+    {
+        "id": 91,
+        "code": "chat-bubble-left-right.svg"
+    },
+    {
+        "id": 92,
+        "code": "chat-bubble-left.svg"
+    },
+    {
+        "id": 93,
+        "code": "chat-bubble-oval-left-ellipsis.svg"
+    },
+    {
+        "id": 94,
+        "code": "chat-bubble-oval-left.svg"
+    },
+    {
+        "id": 95,
+        "code": "check-badge.svg"
+    },
+    {
+        "id": 96,
+        "code": "check-circle.svg"
+    },
+    {
+        "id": 97,
+        "code": "check.svg"
+    },
+    {
+        "id": 98,
+        "code": "chevron-double-down.svg"
+    },
+    {
+        "id": 99,
+        "code": "chevron-double-left.svg"
+    },
+    {
+        "id": 100,
+        "code": "chevron-double-right.svg"
+    },
+    {
+        "id": 101,
+        "code": "chevron-double-up.svg"
+    },
+    {
+        "id": 102,
+        "code": "chevron-down.svg"
+    },
+    {
+        "id": 103,
+        "code": "chevron-left.svg"
+    },
+    {
+        "id": 104,
+        "code": "chevron-right.svg"
+    },
+    {
+        "id": 105,
+        "code": "chevron-up-down.svg"
+    },
+    {
+        "id": 106,
+        "code": "chevron-up.svg"
+    },
+    {
+        "id": 107,
+        "code": "circle-stack.svg"
+    },
+    {
+        "id": 108,
+        "code": "clipboard-document-check.svg"
+    },
+    {
+        "id": 109,
+        "code": "clipboard-document-list.svg"
+    },
+    {
+        "id": 110,
+        "code": "clipboard-document.svg"
+    },
+    {
+        "id": 111,
+        "code": "clipboard.svg"
+    },
+    {
+        "id": 112,
+        "code": "clock.svg"
+    },
+    {
+        "id": 113,
+        "code": "cloud-arrow-down.svg"
+    },
+    {
+        "id": 114,
+        "code": "cloud-arrow-up.svg"
+    },
+    {
+        "id": 115,
+        "code": "cloud.svg"
+    },
+    {
+        "id": 116,
+        "code": "code-bracket-square.svg"
+    },
+    {
+        "id": 117,
+        "code": "code-bracket.svg"
+    },
+    {
+        "id": 118,
+        "code": "cog-6-tooth.svg"
+    },
+    {
+        "id": 119,
+        "code": "cog-8-tooth.svg"
+    },
+    {
+        "id": 120,
+        "code": "cog.svg"
+    },
+    {
+        "id": 121,
+        "code": "command-line.svg"
+    },
+    {
+        "id": 122,
+        "code": "computer-desktop.svg"
+    },
+    {
+        "id": 123,
+        "code": "cpu-chip.svg"
+    },
+    {
+        "id": 124,
+        "code": "credit-card.svg"
+    },
+    {
+        "id": 125,
+        "code": "cube-transparent.svg"
+    },
+    {
+        "id": 126,
+        "code": "cube.svg"
+    },
+    {
+        "id": 127,
+        "code": "currency-bangladeshi.svg"
+    },
+    {
+        "id": 128,
+        "code": "currency-dollar.svg"
+    },
+    {
+        "id": 129,
+        "code": "currency-euro.svg"
+    },
+    {
+        "id": 130,
+        "code": "currency-pound.svg"
+    },
+    {
+        "id": 131,
+        "code": "currency-rupee.svg"
+    },
+    {
+        "id": 132,
+        "code": "currency-yen.svg"
+    },
+    {
+        "id": 133,
+        "code": "cursor-arrow-rays.svg"
+    },
+    {
+        "id": 134,
+        "code": "cursor-arrow-ripple.svg"
+    },
+    {
+        "id": 135,
+        "code": "device-phone-mobile.svg"
+    },
+    {
+        "id": 136,
+        "code": "device-tablet.svg"
+    },
+    {
+        "id": 137,
+        "code": "document-arrow-down.svg"
+    },
+    {
+        "id": 138,
+        "code": "document-arrow-up.svg"
+    },
+    {
+        "id": 139,
+        "code": "document-chart-bar.svg"
+    },
+    {
+        "id": 140,
+        "code": "document-check.svg"
+    },
+    {
+        "id": 141,
+        "code": "document-duplicate.svg"
+    },
+    {
+        "id": 142,
+        "code": "document-magnifying-glass.svg"
+    },
+    {
+        "id": 143,
+        "code": "document-minus.svg"
+    },
+    {
+        "id": 144,
+        "code": "document-plus.svg"
+    },
+    {
+        "id": 145,
+        "code": "document-text.svg"
+    },
+    {
+        "id": 146,
+        "code": "document.svg"
+    },
+    {
+        "id": 147,
+        "code": "ellipsis-horizontal-circle.svg"
+    },
+    {
+        "id": 148,
+        "code": "ellipsis-horizontal.svg"
+    },
+    {
+        "id": 149,
+        "code": "ellipsis-vertical.svg"
+    },
+    {
+        "id": 150,
+        "code": "envelope-open.svg"
+    },
+    {
+        "id": 151,
+        "code": "envelope.svg"
+    },
+    {
+        "id": 152,
+        "code": "exclamation-circle.svg"
+    },
+    {
+        "id": 153,
+        "code": "exclamation-triangle.svg"
+    },
+    {
+        "id": 154,
+        "code": "eye-dropper.svg"
+    },
+    {
+        "id": 155,
+        "code": "eye-slash.svg"
+    },
+    {
+        "id": 156,
+        "code": "eye.svg"
+    },
+    {
+        "id": 157,
+        "code": "face-frown.svg"
+    },
+    {
+        "id": 158,
+        "code": "face-smile.svg"
+    },
+    {
+        "id": 159,
+        "code": "film.svg"
+    },
+    {
+        "id": 160,
+        "code": "finger-print.svg"
+    },
+    {
+        "id": 161,
+        "code": "fire.svg"
+    },
+    {
+        "id": 162,
+        "code": "flag.svg"
+    },
+    {
+        "id": 163,
+        "code": "folder-arrow-down.svg"
+    },
+    {
+        "id": 164,
+        "code": "folder-minus.svg"
+    },
+    {
+        "id": 165,
+        "code": "folder-open.svg"
+    },
+    {
+        "id": 166,
+        "code": "folder-plus.svg"
+    },
+    {
+        "id": 167,
+        "code": "folder.svg"
+    },
+    {
+        "id": 168,
+        "code": "forward.svg"
+    },
+    {
+        "id": 169,
+        "code": "funnel.svg"
+    },
+    {
+        "id": 170,
+        "code": "gif.svg"
+    },
+    {
+        "id": 171,
+        "code": "gift-top.svg"
+    },
+    {
+        "id": 172,
+        "code": "gift.svg"
+    },
+    {
+        "id": 173,
+        "code": "globe-alt.svg"
+    },
+    {
+        "id": 174,
+        "code": "globe-americas.svg"
+    },
+    {
+        "id": 175,
+        "code": "globe-asia-australia.svg"
+    },
+    {
+        "id": 176,
+        "code": "globe-europe-africa.svg"
+    },
+    {
+        "id": 177,
+        "code": "hand-raised.svg"
+    },
+    {
+        "id": 178,
+        "code": "hand-thumb-down.svg"
+    },
+    {
+        "id": 179,
+        "code": "hand-thumb-up.svg"
+    },
+    {
+        "id": 180,
+        "code": "hashtag.svg"
+    },
+    {
+        "id": 181,
+        "code": "heart.svg"
+    },
+    {
+        "id": 182,
+        "code": "home-modern.svg"
+    },
+    {
+        "id": 183,
+        "code": "home.svg"
+    },
+    {
+        "id": 184,
+        "code": "identification.svg"
+    },
+    {
+        "id": 185,
+        "code": "inbox-arrow-down.svg"
+    },
+    {
+        "id": 186,
+        "code": "inbox-stack.svg"
+    },
+    {
+        "id": 187,
+        "code": "inbox.svg"
+    },
+    {
+        "id": 188,
+        "code": "information-circle.svg"
+    },
+    {
+        "id": 189,
+        "code": "key.svg"
+    },
+    {
+        "id": 190,
+        "code": "language.svg"
+    },
+    {
+        "id": 191,
+        "code": "lifebuoy.svg"
+    },
+    {
+        "id": 192,
+        "code": "light-bulb.svg"
+    },
+    {
+        "id": 193,
+        "code": "link.svg"
+    },
+    {
+        "id": 194,
+        "code": "list-bullet.svg"
+    },
+    {
+        "id": 195,
+        "code": "lock-closed.svg"
+    },
+    {
+        "id": 196,
+        "code": "lock-open.svg"
+    },
+    {
+        "id": 197,
+        "code": "magnifying-glass-circle.svg"
+    },
+    {
+        "id": 198,
+        "code": "magnifying-glass-minus.svg"
+    },
+    {
+        "id": 199,
+        "code": "magnifying-glass-plus.svg"
+    },
+    {
+        "id": 200,
+        "code": "magnifying-glass.svg"
+    },
+    {
+        "id": 201,
+        "code": "map-pin.svg"
+    },
+    {
+        "id": 202,
+        "code": "map.svg"
+    },
+    {
+        "id": 203,
+        "code": "megaphone.svg"
+    },
+    {
+        "id": 204,
+        "code": "microphone.svg"
+    },
+    {
+        "id": 205,
+        "code": "minus-circle.svg"
+    },
+    {
+        "id": 206,
+        "code": "minus-small.svg"
+    },
+    {
+        "id": 207,
+        "code": "minus.svg"
+    },
+    {
+        "id": 208,
+        "code": "moon.svg"
+    },
+    {
+        "id": 209,
+        "code": "musical-note.svg"
+    },
+    {
+        "id": 210,
+        "code": "newspaper.svg"
+    },
+    {
+        "id": 211,
+        "code": "no-symbol.svg"
+    },
+    {
+        "id": 212,
+        "code": "paint-brush.svg"
+    },
+    {
+        "id": 213,
+        "code": "paper-airplane.svg"
+    },
+    {
+        "id": 214,
+        "code": "paper-clip.svg"
+    },
+    {
+        "id": 215,
+        "code": "pause-circle.svg"
+    },
+    {
+        "id": 216,
+        "code": "pause.svg"
+    },
+    {
+        "id": 217,
+        "code": "pencil-square.svg"
+    },
+    {
+        "id": 218,
+        "code": "pencil.svg"
+    },
+    {
+        "id": 219,
+        "code": "phone-arrow-down-left.svg"
+    },
+    {
+        "id": 220,
+        "code": "phone-arrow-up-right.svg"
+    },
+    {
+        "id": 221,
+        "code": "phone-x-mark.svg"
+    },
+    {
+        "id": 222,
+        "code": "phone.svg"
+    },
+    {
+        "id": 223,
+        "code": "photo.svg"
+    },
+    {
+        "id": 224,
+        "code": "play-circle.svg"
+    },
+    {
+        "id": 225,
+        "code": "play-pause.svg"
+    },
+    {
+        "id": 226,
+        "code": "play.svg"
+    },
+    {
+        "id": 227,
+        "code": "plus-circle.svg"
+    },
+    {
+        "id": 228,
+        "code": "plus-small.svg"
+    },
+    {
+        "id": 229,
+        "code": "plus.svg"
+    },
+    {
+        "id": 230,
+        "code": "power.svg"
+    },
+    {
+        "id": 231,
+        "code": "presentation-chart-bar.svg"
+    },
+    {
+        "id": 232,
+        "code": "presentation-chart-line.svg"
+    },
+    {
+        "id": 233,
+        "code": "printer.svg"
+    },
+    {
+        "id": 234,
+        "code": "puzzle-piece.svg"
+    },
+    {
+        "id": 235,
+        "code": "qr-code.svg"
+    },
+    {
+        "id": 236,
+        "code": "question-mark-circle.svg"
+    },
+    {
+        "id": 237,
+        "code": "queue-list.svg"
+    },
+    {
+        "id": 238,
+        "code": "radio.svg"
+    },
+    {
+        "id": 239,
+        "code": "receipt-percent.svg"
+    },
+    {
+        "id": 240,
+        "code": "receipt-refund.svg"
+    },
+    {
+        "id": 241,
+        "code": "rectangle-group.svg"
+    },
+    {
+        "id": 242,
+        "code": "rectangle-stack.svg"
+    },
+    {
+        "id": 243,
+        "code": "rocket-launch.svg"
+    },
+    {
+        "id": 244,
+        "code": "rss.svg"
+    },
+    {
+        "id": 245,
+        "code": "scale.svg"
+    },
+    {
+        "id": 246,
+        "code": "scissors.svg"
+    },
+    {
+        "id": 247,
+        "code": "server-stack.svg"
+    },
+    {
+        "id": 248,
+        "code": "server.svg"
+    },
+    {
+        "id": 249,
+        "code": "share.svg"
+    },
+    {
+        "id": 250,
+        "code": "shield-check.svg"
+    },
+    {
+        "id": 251,
+        "code": "shield-exclamation.svg"
+    },
+    {
+        "id": 252,
+        "code": "shopping-bag.svg"
+    },
+    {
+        "id": 253,
+        "code": "shopping-cart.svg"
+    },
+    {
+        "id": 254,
+        "code": "signal-slash.svg"
+    },
+    {
+        "id": 255,
+        "code": "signal.svg"
+    },
+    {
+        "id": 256,
+        "code": "sparkles.svg"
+    },
+    {
+        "id": 257,
+        "code": "speaker-wave.svg"
+    },
+    {
+        "id": 258,
+        "code": "speaker-x-mark.svg"
+    },
+    {
+        "id": 259,
+        "code": "square-2-stack.svg"
+    },
+    {
+        "id": 260,
+        "code": "square-3-stack-3d.svg"
+    },
+    {
+        "id": 261,
+        "code": "squares-2x2.svg"
+    },
+    {
+        "id": 262,
+        "code": "squares-plus.svg"
+    },
+    {
+        "id": 263,
+        "code": "star.svg"
+    },
+    {
+        "id": 264,
+        "code": "stop-circle.svg"
+    },
+    {
+        "id": 265,
+        "code": "stop.svg"
+    },
+    {
+        "id": 266,
+        "code": "sun.svg"
+    },
+    {
+        "id": 267,
+        "code": "swatch.svg"
+    },
+    {
+        "id": 268,
+        "code": "table-cells.svg"
+    },
+    {
+        "id": 269,
+        "code": "tag.svg"
+    },
+    {
+        "id": 270,
+        "code": "ticket.svg"
+    },
+    {
+        "id": 271,
+        "code": "trash.svg"
+    },
+    {
+        "id": 272,
+        "code": "trophy.svg"
+    },
+    {
+        "id": 273,
+        "code": "truck.svg"
+    },
+    {
+        "id": 274,
+        "code": "tv.svg"
+    },
+    {
+        "id": 275,
+        "code": "user-circle.svg"
+    },
+    {
+        "id": 276,
+        "code": "user-group.svg"
+    },
+    {
+        "id": 277,
+        "code": "user-minus.svg"
+    },
+    {
+        "id": 278,
+        "code": "user-plus.svg"
+    },
+    {
+        "id": 279,
+        "code": "user.svg"
+    },
+    {
+        "id": 280,
+        "code": "users.svg"
+    },
+    {
+        "id": 281,
+        "code": "variable.svg"
+    },
+    {
+        "id": 282,
+        "code": "video-camera-slash.svg"
+    },
+    {
+        "id": 283,
+        "code": "video-camera.svg"
+    },
+    {
+        "id": 284,
+        "code": "view-columns.svg"
+    },
+    {
+        "id": 285,
+        "code": "viewfinder-circle.svg"
+    },
+    {
+        "id": 286,
+        "code": "wallet.svg"
+    },
+    {
+        "id": 287,
+        "code": "wifi.svg"
+    },
+    {
+        "id": 288,
+        "code": "window.svg"
+    },
+    {
+        "id": 289,
+        "code": "wrench-screwdriver.svg"
+    },
+    {
+        "id": 290,
+        "code": "wrench.svg"
+    },
+    {
+        "id": 291,
+        "code": "x-circle.svg"
+    },
+    {
+        "id": 292,
+        "code": "x-mark.svg"
+    }
+]
