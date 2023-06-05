@@ -55,7 +55,7 @@ from datetime import timedelta
 from pylint import epylint as lint
 from subprocess import Popen, PIPE, STDOUT
 from multiprocessing import Pool, cpu_count
-# from model.model_loader import Yolo7
+from model.model_loader import Yolo7
 
 
 class Code(BaseModel):
@@ -71,15 +71,15 @@ class Imgfile(BaseModel):
 class Json(BaseModel):
     res: Union[List[Any], Dict[AnyStr, Any]]
 
-# Yolo7.print_color_pair
+Yolo7.print_color_pair
 
 app = FastAPI(openapi_url=None)
 
-# app.mount('/imgstore', StaticFiles(directory='./imgstore'), name='imgstore')
-# app.mount('/static/fonts', StaticFiles(directory='./server/static/fonts'), name='font1')
-# app.mount('/static/fonts', StaticFiles(directory='./server/static/fonts'), name='font2')
-# app.mount('/static', StaticFiles(directory='./server/static'), name='static')
-# app.mount('/streaming', StaticFiles(directory='/streaming'), name='streaming')
+app.mount('/imgstore', StaticFiles(directory='./imgstore'), name='imgstore')
+app.mount('/static/fonts', StaticFiles(directory='./server/static/fonts'), name='font1')
+app.mount('/static/fonts', StaticFiles(directory='./server/static/fonts'), name='font2')
+app.mount('/static', StaticFiles(directory='./server/static'), name='static')
+#app.mount('/streaming', StaticFiles(directory='/streaming'), name='streaming')
 
 fake_users_db = {
     "johndoe": {

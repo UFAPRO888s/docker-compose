@@ -1,4 +1,7 @@
 def hello():
-    print("hello")
+    print('hello')
 for i in range(10):
-    hello()
+    (hello())
+
+if ___:
+    pass
