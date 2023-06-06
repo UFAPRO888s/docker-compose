@@ -200,7 +200,7 @@
       console.log(data)
       for (var i = 0; i < data.length; i++) {
         var div = document.createElement("div");
-        div.innerHTML = `<div class="cursor-pointer rounded-md bg-white p-4 shadow-md hover:bg-gray-500"><img id="${data[i].code.replace(".svg", "")}" draggable="true" ondragstart="drag(event)" class="h-16 w-16" src="https://raw.githubusercontent.com/infiesX/heroicons/master/optimized/20/solid/${data[i].code}" alt="${data[i].code.replace(".svg", "")}" /></div>`;
+        div.innerHTML = `<div ondragover="allowDrop(event)" ondrop="dragDrop(event)" class="cursor-pointer rounded-md bg-white p-4 shadow-md hover:bg-gray-500"><img id="${data[i].code.replace(".svg", "")}" draggable="true" ondragstart="drag(event)" class="h-16 w-16" src="https://raw.githubusercontent.com/infiesX/heroicons/master/optimized/20/solid/${data[i].code}" alt="${data[i].code.replace(".svg", "")}" /></div>`;
         mainContainer.appendChild(div);
       }
     }
