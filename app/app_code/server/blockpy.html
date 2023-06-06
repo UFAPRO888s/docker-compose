@@ -71,11 +71,13 @@
     .blocklyScrollbarVertical.blocklyFlyoutScrollbar {
       display: none;
     }
-    .blocklyToolboxDiv.blocklyNonSelectable{
-    padding: 10px 20px 10px 20px;
-    background-color: #FFF495;
+
+    .blocklyToolboxDiv.blocklyNonSelectable {
+      padding: 10px 20px 10px 20px;
+      background-color: #FFF495;
     }
-    #blockly{
+
+    #blockly {
       padding: 10px 20px 10px 20px;
     }
   </style>
@@ -94,31 +96,29 @@
       </div>
       <div class="flex w-full gap-4">
         <div class="h-96 w-full rounded-3xl bg-[#EAEAE0]">
-          <div class="flex h-96 items-center justify-center">
-            <div id="showIcon"></div>
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"
+            class="flex h-96 items-center justify-center"></div>
+        </div>
+        <div class="h-96 w-full rounded-3xl bg-[#EAEAE0]">
+          <div id="iconList" class="flex h-96 flex-wrap justify-center gap-2 overflow-y-auto py-4">
           </div>
         </div>
-        <div className="h-96 w-full rounded-3xl bg-[#EAEAE0]">
-          <div className="flex h-96 flex-wrap justify-center gap-2 overflow-y-auto py-4">
-            <div id="iconList"></div>
-
-          </div>
-        </div>
-       
       </div>
-      <div class="py-8 modal-action ">
-        <button
-          class="btn rounded-3xl bg-[#1DC690] px-20 py-2 text-2xl font-bold text-white shadow-md hover:bg-blue-500 hover:text-slate-100 focus-visible:outline-blue-600 active:bg-blue-800 active:text-blue-100">
+
+      <div class="modal-action">
+        <button onclick="my_modal_4.close()"
+          class="rounded-3xl bg-[#1DC690] px-20 py-2 text-2xl font-bold text-white shadow-md hover:bg-blue-500 hover:text-slate-100 focus-visible:outline-blue-600 active:bg-blue-800 active:text-blue-100">
           เสร็จสิ้น
         </button>
       </div>
     </div>
+
   </dialog>
 
   <nav class="F8A356 navbar flex justify-between">
 
     <div class="flex gap-4">
-      <img src="/static/img/Robolab.svg" style="width: 50px;" />
+      <img id="iconx" src="/static/img/Robolab.svg" style="width: 50px;" />
       <input id="fname" type="text" value="{{loaded_code}}"
         class="text-lg font-bold px-4 py-1 rounded-full outline-none" />
       <button
@@ -167,6 +167,44 @@
     </div>
   </div>
 
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      console.log(data)
+      document.getElementById("iconx").src="https://raw.githubusercontent.com/infiesX/heroicons/master/optimized/20/solid/"+data+".svg";
+      ev.target.appendChild(document.getElementById(data));
+    }
+
+    fetch('/static/icon.json')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+
+        appendData(data);
+      })
+      .catch(function (err) {
+        console.log('error: ' + err);
+      });
+    function appendData(data) {
+      var mainContainer = document.getElementById("iconList");
+      console.log(data)
+      for (var i = 0; i < data.length; i++) {
+        var div = document.createElement("div");
+        div.innerHTML = `<div class="cursor-pointer rounded-md bg-white p-4 shadow-md hover:bg-gray-500"><img id="${data[i].code.replace(".svg", "")}" draggable="true" ondragstart="drag(event)" class="h-16 w-16" src="https://raw.githubusercontent.com/infiesX/heroicons/master/optimized/20/solid/${data[i].code}" alt="${data[i].code.replace(".svg", "")}" /></div>`;
+        mainContainer.appendChild(div);
+      }
+    }
+  </script>
   <script src="/static/js/blockpy_script.js" type="text/javascript"></script>
 </body>
 
