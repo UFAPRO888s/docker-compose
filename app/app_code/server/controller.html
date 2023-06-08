@@ -1,207 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="stylesheet" href="/static/css/hover-min.css" />
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>File explorer</title>
-    <style type="text/css">
-      .tg {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-      .tg td {
-        border-color: black;
-        border-style: solid;
-        border-width: 1px;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-      .tg th {
-        border-color: black;
-        border-style: solid;
-        border-width: 1px;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        font-weight: normal;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-      .tg .tg-baqh {
-        text-align: center;
-        vertical-align: top;
-      }
-    </style>
-  </head>
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="/static/css/hover-min.css" />
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
 
-  <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark"
-      style="background-color: #aaaaaa"
-    >
-      <a class="navbar-brand hvr-shadow" href="/explorer/"
-        ><img src="/static/img/Robolab.svg" style="width: 50px; position: top"
-      /></a>
+  <title>File explorer</title>
+  <style type="text/css">
+    .tg {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/explorer">File</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/controller">Controller</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/lesson">Lesson</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/help">Help</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <table class="tg">
-      <thead>
-        <tr>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_8.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_1.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_2.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh" rowspan="4">
-            <video
-              id="video_hls"
-              controls
-              autoplay
-              style="width: 640px; height: 480px"
-            ></video>
-          </td>
-        </tr>
-        <tr>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_7.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_0.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_3.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-        </tr>
-        <tr>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_6.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_5.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-          <td class="tg-baqh">
-            <a href="#"
-              ><img
-                src="/static/img/move_4.svg"
-                alt="Image"
-                width="100"
-                height="100"
-            /></a>
-          </td>
-        </tr>
-        <tr>
-          <td class="tg-baqh" colspan="3">setting</td>
-        </tr>
-      </thead>
-    </table>
-    <script src="/static/html/hls.js"></script>
-    <script>
-      var video = document.getElementById("video_hls");
-      var videoSrc = "/streaming/master.m3u8";
-      // If no native HLS support, check if hls.js is supported
-      if (Hls.isSupported()) {
-        var config = Hls.DefaultConfig;
-        config.liveSyncDurationCount = 1;
-        config.startFragPrefetch = true;
-        config.maxBufferLength = 4;
-        console.log(config);
-        var hls = new Hls(config);
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-      }
-      // Check for native browser HLS support
-      else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = videoSrc;
-      }
-    </script>
-  </body>
+    .tg td {
+      border-color: black;
+      border-style: solid;
+      border-width: 1px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      overflow: hidden;
+      padding: 10px 5px;
+      word-break: normal;
+    }
+
+    .tg th {
+      border-color: black;
+      border-style: solid;
+      border-width: 1px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      overflow: hidden;
+      padding: 10px 5px;
+      word-break: normal;
+    }
+
+    .tg .tg-baqh {
+      text-align: center;
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+  <video id="video_hls" controls autoplay style="width: 100%; height: 200px"></video>
+  <script src="/static/html/hls.js"></script>
+  <script>
+    var video = document.getElementById("video_hls");
+    var videoSrc = "/streaming/master.m3u8";
+    // If no native HLS support, check if hls.js is supported
+    if (Hls.isSupported()) {
+      var config = Hls.DefaultConfig;
+      config.liveSyncDurationCount = 1;
+      config.startFragPrefetch = true;
+      config.maxBufferLength = 4;
+      console.log(config);
+      var hls = new Hls(config);
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+    }
+    // Check for native browser HLS support
+    else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = videoSrc;
+    }
+  </script>
+</body>
+
 </html>

@@ -656,6 +656,12 @@ async def custom_300_handler(request: Request, _):
 async def blockpy(request: Request):
     print(request)
     return templates.TemplateResponse("blockpy.html", {"request": request,"loaded_code":""})
+
+@app.route("/blockpyed")
+async def blockpy(request: Request):
+    print(request)
+    return templates.TemplateResponse("blockpyed.html", {"request": request,"loaded_code":""})
+
 @app.get("/blockpy/{var}")
 async def blockpy(request: Request,var: str):
     global currentDirectory,currentFile
@@ -705,8 +711,8 @@ async def python_file_editor(request: Request,var: str):
 @app.post('/save_code')
 async def save_code(request: Request):
     global currentDirectory
-    TxtFile=await request.json()
-    #print(TxtFile)
+    TxtFile = await request.json()
+    print(TxtFile)
     fn=''
     if 'filename' in TxtFile.keys():
         if TxtFile['filename'] != '':

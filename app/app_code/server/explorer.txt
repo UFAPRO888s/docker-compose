@@ -1,0 +1,367 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<div id="drop-area" style="display: block; width: 100%; height: 100%; z-index: 0"
+    oncontextmenu="setcontextmenu_space()">
+</div>
+<div id="context-menu" style="display: none;">
+</div>
+<div id="view0_container" class="container" {{ default_view_css_1 }}>
+    <div class="row">
+        <h5></h5>
+    </div>
+
+    {% if ishome %}
+    <div class="row">
+        <div class="col-md-2 col-sm-4 col-6 mt-2" ondrop="drop(event)" ondragover="allowDrop(event)"
+            oncontextmenu="setcontextmenu_space()">
+            <div class="thumbnail hvr-shadow">
+                <a href="/explorer/<..>"><img src='/static/img/root-folder.svg' class='img-thumbnail'
+                        style="border:0px;height:100px; width:100px;" />
+                    <p style="color:black; text-align:center; text-decoration:none;">
+                        <p style="color:black;" data-toggle="tooltip" data-placement="right" title="home">
+                            home
+                        </p>
+                    </p>
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-6 mt-2" ondrop="drop(event);" ondragover="allowDrop(event);"
+                oncontextmenu="setcontextmenu_space();">
+                <div class=" thumbnail hvr-shadow">
+                    <a href="/explorer/<..>"><img src='/static/img/up-folder.svg' class='img-thumbnail'
+                            style="border:0px;height:100px; width:100px;" />
+                        <p style="color:black; text-align:center; text-decoration:none;">
+                            <p style="color:black;" data-toggle="tooltip" data-placement="right" title="go up">
+                                go up
+                            </p>
+                        </p>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+
+            {% for k,dir_i in dir_dict.items() %}
+            <div class="col-md-2 col-sm-4 col-6 mt-2" ondrop="drop(event);" ondragover="allowDrop(event);"
+                draggable="true" ondragstart="drag(event);" oncontextmenu="setcontextmenu_dir();">
+                <div class="thumbnail hvr-shadow">
+                    <a href="/explorer/{{dir_i.f_url}}"><img src='/static/img/{{dir_i.image}}' class='img-thumbnail'
+                            style="border:0px;height:100px; width:100px;" />
+                        <p style="color:black; text-align:center; text-decoration:none;">
+                            <p style="color:black;" data-toggle="tooltip" data-placement="right"
+                                title="{{dir_i.f_complete}}">
+                                {{ dir_i.f }}
+                            </p>
+                        </p>
+                    </a>
+
+
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+
+        <div class="row mt-4">
+            <h5></h5>
+        </div>
+        <hr>
+
+        <div class="row">
+
+            {% for k,dir_i in file_dict.items() %}
+
+            <div class="col-md-2 col-sm-4 col-6 mt-2" draggable="true" ondragstart="drag(event)"
+                oncontextmenu="setcontextmenu_file()">
+
+                <!-- <a data-toggle="tooltip" data-placement="left" title="download" id="download"
+                    href="/download/{{dir_i.f_url}}"><img src="/static/img/download.svg"
+                        style="width:15px;height:15px;"></a> -->
+
+                <div class="thumbnail hvr-shadow">
+
+
+                    <a href="/open/{{dir_i.f_url}}" id="{{dir_i.f_url}}"><img src='/static/img/{{dir_i.image}}'
+                            class='img-thumbnail' style="border:0px;height:100px; width:100px;" id="{{dir_i.f_url}}" />
+                        <p style="color:black; text-align:center; text-decoration:none;">
+                            <p style="color:black;" data-toggle="tooltip" data-placement="right"
+                                title="{{dir_i.f_complete}}">
+                                {{ dir_i.f }}
+                            </p>
+                        </p>
+                    </a>
+
+
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div id="view1_container" class="container" {{ default_view_css_2 }}>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Created Time</th>
+                <th>Modified Time</th>
+                <th>Size</th>
+            </tr>
+            <tr>
+                <td>
+                    {% if ishome %}
+                    <a href="/explorer/<..>">
+                        <img src='/static/img/root-folder.svg'
+                            style="position:absolute; height:25px; width:25px; border:0px;" />
+                        <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">home</p>
+                    </a>
+                    {% else %}
+                    <a href="/explorer/<..>">
+                        <img src='/static/img/up-folder.svg'
+                            style="position:absolute; height:25px; width:25px; border:0px;" />
+                        <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">go up</p>
+                    </a>
+                    {% endif %}
+                </td>
+                <td>
+                    <p style="margin-left:45px;">---</p>
+                </td>
+                <td>
+                    <p style="margin-left:45px;">---</p>
+                </td>
+                <td>
+                    <p style="margin-left:110px;">---</p>
+                </td>
+            </tr>
+            {% for k,dir_i in dir_dict.items() %}
+            <tr>
+                <td>
+                    <a href="/explorer/{{dir_i.f_url}}">
+                        <img src='/static/img/{{dir_i.image}}'
+                            style="position:absolute; height:25px; width:25px; border:0px;" />
+                        <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">{{dir_i.f}}</p>
+                    </a>
+                </td>
+                <td>
+                    <p style="margin-left:45px;">{{dir_i.dtc}}</p>
+                </td>
+                <td>
+                    <p style="margin-left:45px;">{{dir_i.dtm}}</p>
+                </td>
+                <td>
+                    <p style="margin-left:110px;">{{dir_i.size}}</p>
+                </td>
+            </tr>
+            {% endfor %}
+            {% for k,dir_i in file_dict.items() %}
+            <tr>
+                <td>
+                    <a href="/open/{{dir_i.f_url}}">
+                        <img src='/static/img/{{dir_i.image}}'
+                            style="position:absolute; height:25px; width:25px; border:0px;" />
+                        <p style="margin-left:35px; color:black; text-align:left; text-decoration:none;">{{dir_i.f}}</p>
+                    </a>
+                </td>
+                <td>
+                    <p style="margin-left:45px;">{{dir_i.dtc}}</p>
+                </td>
+                <td>
+                    <p style="margin-left:45px;">{{dir_i.dtm}}</p>
+                </td>
+                <td>
+                    <p style="margin-left:110px;">{{dir_i.size}}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    <script>
+
+        document.getElementById("upload-form-container").style.display = "block";
+        let dropArea = document.getElementById("drop-area");
+        ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        function allowDrop(e) {
+            e.preventDefault();
+        }
+        async function drop(e) {
+            e.preventDefault();
+            var source_data = e.dataTransfer.getData("text");
+            var target_data = (e.target || e.srcElement).textContent.trim();
+            if (target_data == "") {
+                target_data = (e.target || e.srcElement).parentElement.textContent.trim();
+            }
+
+            console.log("source:" + source_data);
+            console.log("target:" + target_data);
+            if (target_data == "go up") {
+                target_data = ".."
+            } else if (target_data == "home") {
+                target_data = "/"
+            }
+            const Http = new XMLHttpRequest();
+            const url = "/move?source=" + source_data + "&target=" + target_data;
+            Http.open("GET", url);
+            await Http.send();
+            timeout = setTimeout(update_page, 500);
+        }
+
+        function drag(e) {
+            e.dataTransfer.setData("text", e.target.id);
+        }
+        ["dragenter", "dragover"].forEach((eventName) => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        ["dragleave", "drop"].forEach((eventName) => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropArea.classList.add("highlight");
+            dropArea.style.color = "rgba(0, 0, 0, 1)";
+            dropArea.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        }
+
+        function unhighlight(e) {
+            dropArea.classList.remove("highlight");
+            dropArea.style.color = "rgba(0, 0, 0, 1)";
+            dropArea.style.backgroundColor = "rgba(0, 0, 0, 0)";
+        }
+        dropArea.addEventListener("drop", handleDrop, false);
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            var data = e.dataTransfer.getData("text");
+            let files = dt.files;
+            if (data == "") {
+                _("file1").files = files;
+                uploadFile(files);
+                console.log("uploaded");
+            }
+
+            console.log(data);
+        }
+        function update_page() {
+            window.location = "/explorer";
+            // window.location.replace="/explorer";
+        }
+        // setInterval(update_page, 1000);
+        var contextMenu = document.getElementById("context-menu");
+        var scope = document.querySelector("body");
+        scope.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+            const { clientX: mouseX, clientY: mouseY } = event;
+            contextMenu.style.top = mouseY + 'px';
+            contextMenu.style.left = mouseX + 'px';
+            contextMenu.style.display = "block";
+            console.log("x:" + mouseX + " y:" + mouseY);
+        });
+        scope.addEventListener("click", (e) => {
+            if (e.target.offsetParent != contextMenu) {
+                contextMenu.style.display = "none";
+                document.getElementById("context-menu").innerHTML = "";
+                console.log("outside menu");
+            }
+        })
+        function menu_add(m, text, url) {
+            var d = document.createElement("div");
+            d.class = 'item';
+            var a = document.createElement("a");
+            a.href = url;
+            a.innerHTML = text;
+            a.setAttribute("class", "btn btn-secondary btn-block");
+            d.appendChild(a);
+            m.appendChild(d);
+        }
+        function menu_add2(m, text, url) {
+            var d = document.createElement("div");
+            d.class = 'item';
+            var a = document.createElement("button");
+            a.textContent = text;
+            a.setAttribute("class", "btn btn-secondary btn-block");
+            a.setAttribute("onclick", url);
+            d.appendChild(a);
+            m.appendChild(d);
+        }
+        function getInnermostHovered() {
+            var n = document.querySelector(":hover");
+            var nn;
+            while (n) {
+                nn = n;
+                n = nn.querySelector(":hover");
+            }
+            return nn;
+        }
+        function setcontextmenu_dir() {
+            var n = getInnermostHovered();
+            var item = n.textContent.trim();
+            if (item == "") {
+                item = n.parentElement.textContent.trim();
+            }
+            console.log(item);
+            document.getElementById("context-menu").innerHTML = "";
+            var c = document.getElementById("context-menu");
+            menu_add(c, "Download", "/dowload/" + item);
+            menu_add2(c, "Rename", "Rename('" + item + "');");
+            menu_add(c, "Delete", "/delete?path=" + item);
+        }
+        function setcontextmenu_file() {
+            var n = getInnermostHovered();
+            var item = n.textContent.trim();
+            if (item == "") {
+                item = n.parentElement.textContent.trim();
+            }
+            console.log(item);
+            document.getElementById("context-menu").innerHTML = "";
+            var c = document.getElementById("context-menu");
+            menu_add(c, "open with PyEditor", "/python_editor/" + item);
+            menu_add(c, "open with BlockEditor", "/blockpy/" + item);
+            menu_add(c, "Download", "/dowload/" + item);
+            menu_add2(c, "Rename", "Rename('" + item + "');");
+            menu_add(c, "Delete", "/delete?path=" + item);
+        }
+        function setcontextmenu_space() {
+            document.getElementById("context-menu").innerHTML = ""
+            var c = document.getElementById("context-menu")
+            menu_add2(c, "New folder", "newfolder();");
+            menu_add(c, "New Python", "/python_editor/");
+            menu_add(c, "New Blockly", "/blockpy/");
+        }
+        async function newfolder() {
+            contextMenu.style.display = "none";
+            var name = prompt("New folder name.", "Untitled folder");
+            console.log(name);
+            var url = "/mkdir?path=" + name;
+            const Http = new XMLHttpRequest();
+            Http.open("GET", url);
+            await Http.send();
+            timeout = setTimeout(update_page, 500);
+        }
+        async function Rename(old_filename) {
+            contextMenu.style.display = "none";
+            var name = prompt("New file name.", "Untitled");
+            console.log(name);
+            var url = "/move?source=" + old_filename + "&target=" + name;
+            const Http = new XMLHttpRequest();
+            Http.open("GET", url);
+            await Http.send();
+            timeout = setTimeout(update_page, 500);
+        }
+    </script>
+
+    {% endblock content %}

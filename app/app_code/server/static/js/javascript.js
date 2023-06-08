@@ -176,6 +176,7 @@ $(document).ready(function () {
   }
   async function save_code() {
     var fname = document.getElementById("fname").value;
+    var pathname = document.getElementById("pathname").value;
     var code = editor.getValue();
     console.log(fname);
     console.log(code);
@@ -186,7 +187,7 @@ $(document).ready(function () {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        filename: fname,
+        filename: fname.replace(".py","") +"_"+ pathname +".py",
         text: code,
       }),
     });
